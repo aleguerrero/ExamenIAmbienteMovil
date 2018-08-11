@@ -40,6 +40,9 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
             case R.id.btnProductos:
                 startActivity(new Intent(MenuPrincipal.this, ProductosFrm.class));
                 break;
+            case R.id.btnFacturas:
+                startActivity(new Intent(MenuPrincipal.this, FacturaFrm.class));
+                break;
         }
     }
 

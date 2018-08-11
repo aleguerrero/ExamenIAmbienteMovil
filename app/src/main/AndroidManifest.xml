@@ -19,7 +19,8 @@
         <activity android:name=".Clientes" />
         <activity android:name=".ClientesFrm" />
         <activity android:name=".ProductosFrm" />
-        <activity android:name=".Facturas"></activity>
+        <activity android:name=".Facturas" />
+        <activity android:name=".FacturaFrm"></activity>
     </application>
 
 </manifest>

@@ -94,6 +94,27 @@ public class SQLite_Class extends SQLiteOpenHelper {
         return ListaClientes;
     }
 
+    public ArrayList<String> ConsultaClientesSpinner() {
+        String Nombre = "", Telefono = "";
+        int Id;
+        ArrayList<String> ListaClientes = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM Clientes", null);
+        while(cursor.moveToNext())
+        {
+            Id = cursor.getInt(cursor.getColumnIndex("id"));
+            Nombre = cursor.getString(cursor.getColumnIndex("nombre"));
+            Telefono = cursor.getString(cursor.getColumnIndex("telefono"));
+            ListaClientes.add(Id + " - " + Nombre + " - " + Telefono);
+            Nombre = "";
+            Id = 0;
+            Telefono = "";
+        }
+        cursor.close();
+        db.close();
+        return ListaClientes;
+    }
+
     public boolean ModificaCliente(Cliente cliente) {
         try {
             ContentValues values = new ContentValues();
@@ -136,6 +157,29 @@ public class SQLite_Class extends SQLiteOpenHelper {
             ListaProductos.add(Nombre +", "+ Precio);
             Nombre = "";
             Precio = "";
+        }
+        cursor.close();
+        db.close();
+        return ListaProductos;
+    }
+
+    public ArrayList<String> ConsultaProductosSpinner() {
+        String Nombre = "";
+        int Id;
+        String Precio = "";
+        ArrayList<String> ListaProductos = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM Productos", null);
+
+        while(cursor.moveToNext())
+        {
+            Id = cursor.getInt(cursor.getColumnIndex("id"));
+            Precio = cursor.getString(cursor.getColumnIndex("precioVenta"));
+            Nombre = cursor.getString(cursor.getColumnIndex("nombre"));
+            ListaProductos.add(Id + " - " + Nombre + " - " + Precio);
+            Nombre = "";
+            Precio = "";
+            Id = 0;
         }
         cursor.close();
         db.close();

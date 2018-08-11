@@ -4,38 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuPrincipal">
+    tools:context=".MenuPrincipal"
+    tools:layout_editor_absoluteY="25dp">
 
     <Button
         android:id="@+id/btnFacturas"
         android:layout_width="206dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="304dp"
+        android:layout_marginBottom="27dp"
         android:text="Listado de Facturas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnProductos"
         tools:text="Listado de Facturas" />
 
     <Button
         android:id="@+id/btnProductos"
-        android:layout_width="206dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginBottom="8dp"
         android:text="Listado de Productos"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnFacturas"
+        app:layout_constraintEnd_toEndOf="@+id/btnFacturas"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnFacturas"
+        app:layout_constraintTop_toBottomOf="@+id/btnClientes"
         tools:text="Listado de Productos" />
 
     <Button
         android:id="@+id/btnClientes"
         android:layout_width="205dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginBottom="12dp"
         android:text="Listado de Clientes"
+        app:layout_constraintBottom_toTopOf="@+id/btnProductos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:text="Listado de Clientes" />
 </android.support.constraint.ConstraintLayout>
