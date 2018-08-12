@@ -26,7 +26,7 @@ public class ProductosFrm extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clientes_frm);
+        setContentView(R.layout.activity_productos_frm);
 
         incializaPantalla();
         lvProducto.setAdapter(UtilesUI.CargaArrayAdapter(this, bl.ConsultaProducto()));

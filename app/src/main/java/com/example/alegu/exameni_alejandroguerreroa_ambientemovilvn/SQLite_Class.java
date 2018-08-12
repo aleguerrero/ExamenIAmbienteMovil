@@ -5,7 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class SQLite_Class extends SQLiteOpenHelper {
@@ -31,7 +35,7 @@ public class SQLite_Class extends SQLiteOpenHelper {
             "CREATE TABLE Facturas(" +
                     "numero INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "cliente INTEGER," +
-                    "producto TEXT," +
+                    "producto INTEGER," +
                     "cantidad INTEGER," +
                     "fecha DATE," +
                     "FOREIGN KEY(cliente) REFERENCES Clientes(id)," +
@@ -201,4 +205,27 @@ public class SQLite_Class extends SQLiteOpenHelper {
         }
     }
 
+    //Factura
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public boolean InsertaFactura(Factura factura) {
+        try {
+            ContentValues values = new ContentValues();
+            values.put("cantidad", factura.cantidad);
+            values.put("cliente", factura.cliente);
+            values.put("producto", factura.producto);
+
+            //Fecha
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate localDate = LocalDate.now();
+            values.put("fecha", dtf.format(localDate));
+
+            SQLiteDatabase db = this.getWritableDatabase();
+            long Factura_Id = db.insert("Facturas", null, values);
+            db.close();
+
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
